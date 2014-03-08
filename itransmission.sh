@@ -118,7 +118,7 @@ CWARNING="$CRED"
 CMSG="$CCYAN"
 #Color Variable
 
-if [ -n "$(ps -ef | grep 'transmission-daemon' | grep -v 'grep' | awk '{print $2}')"];then
+if [ -n "$(ps -ef | grep 'transmission-daemon' | grep -v 'grep' | awk '{print $2}')" ];then
 IP=$( ifconfig | grep 'inet addr' | grep -Ev 'inet addr:127.0.0|inet addr:192.168.0|inet addr:10.0.0' | sed -n 's/.*inet addr:\([^ ]*\) .*/\1/p' | head -1)
 cat <<EOF
 ${CCYAN}+-----------------------------------------+$CEND
