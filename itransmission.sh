@@ -33,7 +33,9 @@ rm /tmp/pt -rf
 ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib/libevent-1.4.so.2
  
 transmission-daemon
-killall transmission-daemon
+ps -ef | grep 'transmission-daemon' \
+       | grep -v 'grep' | awk '{print $2}'\
+       | while read pid;do kill -9 $pid >/dev/null 2&>1 ;done
 
 mkdir -p ~/.config/transmission-daemon/
 cat > ~/.config/transmission-daemon/settings.json <<EOF
@@ -100,4 +102,34 @@ EOF
 
 transmission-daemon
 clear
+
+#Color Variable
+CSI=$(echo -e "\033[")
+CEND="${CSI}0m"
+CDGREEN="${CSI}32m"
+CRED="${CSI}1;31m"
+CGREEN="${CSI}1;32m"
+CYELLOW="${CSI}1;33m"
+CBLUE="${CSI}1;34m"
+CMAGENTA="${CSI}1;35m"
+CCYAN="${CSI}1;36m"
+CQUESTION="$CMAGENTA"
+CWARNING="$CRED"
+CMSG="$CCYAN"
+#Color Variable
+
+if [ -n "$(ps -ef | grep 'transmission-daemon' | grep -v 'grep' | awk '{print $2}')"];then
+IP=$( ifconfig | grep 'inet addr' | grep -Ev 'inet addr:127.0.0|inet addr:192.168.0|inet addr:10.0.0' | sed -n 's/.*inet addr:\([^ ]*\) .*/\1/p' | head -1)
+cat <<EOF
+${CCYAN}+-----------------------------------------+$CEND
+${CGREEN}  transmission Install Done. $CEND
+${CCYAN}+-----------------------------------------+$CEND
+${CGREEN}  Version:       $CMAGENTA 2.01$CEND
+${CGREEN}  User:          $CMAGENTA ${USERID}$CEND
+${CGREEN}  Passwd:        $CMAGENTA ${PASSWD}$CEND
+${CGREEN}  WebPanel:      $CMAGENTA ${IP}:${PORT}$CEND
+EOF
+else
+echo -e "\033[1;31m transmission Install Failed! \033[0m"
+fi
 exit 0
