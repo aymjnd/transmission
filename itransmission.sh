@@ -35,7 +35,7 @@ ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib/libevent-1.4.so.2
 transmission-daemon
 ps -ef | grep 'transmission-daemon' \
        | grep -v 'grep' | awk '{print $2}'\
-       | while read pid;do kill -9 $pid >/dev/null 2&>1 ;done
+       | while read pid;do kill -9 $pid >/dev/null 2>&1 ;done
 
 mkdir -p ~/.config/transmission-daemon/
 cat > ~/.config/transmission-daemon/settings.json <<EOF
