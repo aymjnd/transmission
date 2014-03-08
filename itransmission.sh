@@ -33,7 +33,7 @@ rm /tmp/pt -rf
 ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib/libevent-1.4.so.2
  
 transmission-daemon
-pkill transmission-daemon
+killall transmission-daemon
 
 mkdir -p ~/.config/transmission-daemon/
 cat > ~/.config/transmission-daemon/settings.json <<EOF
