@@ -11,7 +11,7 @@ mkdir -p $DOWNLOADDIR
   || ( [ -n "$(grep 'Debian' /etc/issue)" ] \
   && ( apt-get update;apt-get install gcc g++ ca-certificates libcurl4-openssl-dev libssl-dev pkg-config build-essential checkinstall intltool -y )) \
   || ( [ -n "$(grep 'Ubuntu' /etc/issue)" ] \
-  && ( apt-get update;apt-get install build-essential automake autoconf libtool pkg-config intltool libcurl4-openssl-dev libglib2.0-dev libevent-dev libminiupnpc-dev libminiupnpc5 libappindicator-dev ))
+  && ( apt-get update;apt-get install build-essential automake autoconf libtool pkg-config intltool libcurl4-openssl-dev libglib2.0-dev libevent-dev libminiupnpc-dev libminiupnpc5 libappindicator-dev ))\
   || exit 0
 
 mkdir /tmp/pt
