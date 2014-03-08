@@ -128,6 +128,8 @@ ${CGREEN}  Version:       $CMAGENTA 2.01$CEND
 ${CGREEN}  User:          $CMAGENTA ${USERID}$CEND
 ${CGREEN}  Passwd:        $CMAGENTA ${PASSWD}$CEND
 ${CGREEN}  WebPanel:      $CMAGENTA ${IP}:${PORT}$CEND
+${CGREEN} Socks5 User&Passwd:  $CMAGENTA ${DEFAULT_USER}:${DEFAULT_PAWD}$CEND
+${CCYAN}+_________________________________________+$CEND
 EOF
 else
 echo -e "\033[1;31m transmission Install Failed! \033[0m"
