@@ -1,7 +1,11 @@
 #!/bin/bash
 DOWNLOADDIR="$HOME/Download"
-USERID="transmission"
-PASSWD="88888888"
+
+echo -n "Enter your username and press [ENTER]: "
+read USERID
+echo -n "Enter your password and press [ENTER]: "
+read PASSWD
+
 PORT="2082"
 
 mkdir -p $DOWNLOADDIR
