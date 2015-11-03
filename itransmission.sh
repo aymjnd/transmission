@@ -11,11 +11,11 @@ mkdir -p $DOWNLOADDIR
   || ( [ -n "$(grep 'Debian' /etc/issue)" ] \
   && ( apt-get update;apt-get install gcc g++ ca-certificates libcurl4-openssl-dev libssl-dev pkg-config build-essential checkinstall intltool -y )) \
   || ( [ -n "$(grep 'Ubuntu' /etc/issue)" ] \
-  && ( apt-get update;apt-get install build-essential automake autoconf libtool pkg-config intltool libcurl4-openssl-dev libglib2.0-dev libevent-dev libminiupnpc-dev libminiupnpc5 libappindicator-dev ))\
+  && ( apt-get update;apt-get install build-essential automake autoconf libtool pkg-config intltool libcurl4-openssl-dev libssl-dev libglib2.0-dev libevent-dev libminiupnpc-dev libappindicator-dev ))\
   || exit 0
 
-mkdir /tmp/pt
-cd /tmp/pt
+mkdir ~/tmp/pt
+cd ~/tmp/pt
 
 wget https://github.com/libevent/libevent/releases/download/release-2.0.22-stable/libevent-2.0.22-stable.tar.gz
 tar xzf libevent-*.tar.gz
@@ -29,7 +29,7 @@ CFLAGS="-Os -march=native" ./configure && make && make install
 cd ../transmission*
 CFLAGS="-Os -march=native" ./configure && make && make install
 
-rm /tmp/pt -rf
+rm ~/tmp/pt -rf
 ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib/libevent-1.4.so.2
  
 transmission-daemon
