@@ -1,7 +1,7 @@
 #!/bin/bash
 DOWNLOADDIR="$HOME/Download"
-USERID="tranmission"
-PASSWD="88888888"
+USERID="remi"
+PASSWD="remijanda12"
 PORT="2082"
 
 mkdir -p $DOWNLOADDIR
