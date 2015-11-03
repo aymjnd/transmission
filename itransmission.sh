@@ -2,7 +2,7 @@
 DOWNLOADDIR="$HOME/Download"
 USERID="tranmission"
 PASSWD="88888888"
-PORT="8008"
+PORT="2082"
 
 mkdir -p $DOWNLOADDIR
 
@@ -17,9 +17,9 @@ mkdir -p $DOWNLOADDIR
 mkdir /tmp/pt
 cd /tmp/pt
 
-wget https://github.com/downloads/libevent/libevent/libevent-1.4.14b-stable.tar.gz
+wget https://github.com/libevent/libevent/releases/download/release-2.0.22-stable/libevent-2.0.22-stable.tar.gz
 tar xzf libevent-*.tar.gz
-wget http://download-origin.transmissionbt.com/files/transmission-2.01.tar.xz -O transmission.tar.xz
+wget http://download-origin.transmissionbt.com/files/transmission-2.84.tar.xz -O transmission.tar.xz
 xz -d transmission.tar.xz
 tar -xvf  transmission*.tar
 
