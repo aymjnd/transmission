@@ -34,7 +34,7 @@ cd ../transmission*
 CFLAGS="-Os -march=native" ./configure && make && make install
 
 rm ~/tmp/pt -rf
-ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib/libevent-1.4.so.2
+ln -s /usr/local/lib/libevent-2.0.so.5 /usr/lib/libevent-2.0.so.5
  
 transmission-daemon
 ps -ef | grep 'transmission-daemon' \
