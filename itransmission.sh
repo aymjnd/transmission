@@ -9,6 +9,7 @@ read PASSWD
 PORT="2082"
 
 mkdir -p $DOWNLOADDIR
+chown -R debian-transmission:debian-transmission "$DOWNLOADDIR"
 
 ( [ -n "$(grep CentOS /etc/issue)" ] \
   && ( yum install gcc g++ make vim pam-devel tcp_wrappers-devel unzip httpd-tools -y ) ) \
