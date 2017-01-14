@@ -9,7 +9,6 @@ read PASSWD
 PORT="2082"
 
 mkdir -p $DOWNLOADDIR
-chown -R debian-transmission:debian-transmission "$DOWNLOADDIR"
 
 ( [ -n "$(grep CentOS /etc/issue)" ] \
   && ( yum install gcc g++ make vim pam-devel tcp_wrappers-devel unzip httpd-tools -y ) ) \
@@ -104,7 +103,8 @@ cat > ~/.config/transmission-daemon/settings.json <<EOF
     "upload-slots-per-torrent": 14
 }
 EOF
-
+chown -R debian-transmission:debian-transmission "$DOWNLOADDIR"
+sleep 3
 transmission-daemon
 clear
 
