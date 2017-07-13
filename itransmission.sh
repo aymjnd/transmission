@@ -21,7 +21,7 @@ mkdir -p $DOWNLOADDIR
 mkdir ~/tmp/pt
 cd ~/tmp/pt
 
-wget https://github.com/libevent/libevent/releases/download/release-2.0.22-stable/libevent-2.0.22-stable.tar.gz
+wget https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz
 tar xzf libevent-*.tar.gz
 wget https://github.com/transmission/transmission-releases/raw/master/transmission-2.92.tar.xz -O transmission.tar.xz
 xz -d transmission.tar.xz
@@ -34,7 +34,7 @@ cd ../transmission*
 CFLAGS="-Os -march=native" ./configure && make && make install
 
 rm ~/tmp/pt -rf
-ln -s /usr/local/lib/libevent-2.0.so.5 /usr/lib/libevent-2.0.so.5
+ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib/libevent-2.1.so.6
  
 transmission-daemon
 ps -ef | grep 'transmission-daemon' \
