@@ -129,7 +129,7 @@ cat <<EOF
 ${CCYAN}+-----------------------------------------+$CEND
 ${CGREEN}  transmission Install Done. $CEND
 ${CCYAN}+-----------------------------------------+$CEND
-${CGREEN}  Version:       $CMAGENTA 2.92$CEND
+${CGREEN}  Version:       $CMAGENTA 2.94$CEND
 ${CGREEN}  User:          $CMAGENTA ${USERID}$CEND
 ${CGREEN}  Passwd:        $CMAGENTA ${PASSWD}$CEND
 ${CGREEN}  WebPanel:      $CMAGENTA ${IP}:${PORT}$CEND
