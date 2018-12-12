@@ -12,10 +12,10 @@ mkdir -p $DOWNLOADDIR
 
 echo -n "Would you like to enable temporary directory folder? [y/N] "
 read TEMPQ
-if [ "$TEMPQ" == "" || "$TEMPQ" == "n" || "$TEMPQ" == "N" ] ; then
+if [ "$TEMPQ" == "" ] || [ "$TEMPQ" == "n" ] || [ "$TEMPQ" == "N" ] ; then
     TEMP = "false"
     DOWNLOADDIRTEMP=$DOWNLOADDIR
-elif [ "$TEMPQ" == "y" || "$TEMPQ" == "Y" ] ; then
+elif [ "$TEMPQ" == "y" ] || [ "$TEMPQ" == "Y" ] ; then
     TEMP = "true"
     echo -n "Enter your temporary download directory (e.g /root/ ) and press [ENTER]: "
     read DOWNLOADDIRTEMP
@@ -92,8 +92,8 @@ cat > ~/.config/transmission-daemon/settings.json <<EOF
     "proxy-enabled": false, 
     "proxy-port": 80, 
     "proxy-type": 0, 
-    "ratio-limit": 2.0000, 
-    "ratio-limit-enabled": false, 
+    "ratio-limit": 0, 
+    "ratio-limit-enabled": true, 
     "rename-partial-files": true, 
     "rpc-authentication-required": true, 
     "rpc-bind-address": "0.0.0.0", 
@@ -107,11 +107,11 @@ cat > ~/.config/transmission-daemon/settings.json <<EOF
     "script-torrent-done-filename": "", 
     "speed-limit-down": 100, 
     "speed-limit-down-enabled": false, 
-    "speed-limit-up": 100, 
-    "speed-limit-up-enabled": false, 
+    "speed-limit-up": 1, 
+    "speed-limit-up-enabled": true, 
     "start-added-torrents": true, 
     "trash-original-torrent-files": false, 
-    "umask": 18, 
+    "umask": 7, 
     "upload-slots-per-torrent": 14
 }
 EOF
@@ -140,7 +140,8 @@ CMSG="$CCYAN"
 #Color Variable
 
 if [ -n "$(ps -ef | grep 'transmission-daemon' | grep -v 'grep' | awk '{print $2}')" ];then
-IP=$( ifconfig | grep 'inet addr' | grep -Ev 'inet addr:127.0.0|inet addr:192.168.0|inet addr:10.0.0' | sed -n 's/.*inet addr:\([^ ]*\) .*/\1/p' | head -1)
+IP=$( ifconfig | grep -Po '(?!(inet 127.\d.\d.1))(inet \K(\d{1,3}\.){3}\d{1,3})' )
+EIP=$( curl icanhazip.com )
 cat <<EOF
 ${CCYAN}+-----------------------------------------+$CEND
 ${CGREEN}  transmission Install Done. $CEND
@@ -149,6 +150,7 @@ ${CGREEN}  Version:       $CMAGENTA 2.94$CEND
 ${CGREEN}  User:          $CMAGENTA ${USERID}$CEND
 ${CGREEN}  Passwd:        $CMAGENTA ${PASSWD}$CEND
 ${CGREEN}  WebPanel:      $CMAGENTA ${IP}:${PORT}$CEND
+${CGREEN}  Ext WebPanel:  $CMAGENTA ${EIP}:${PORT}$CEND
 ${CCYAN}+_________________________________________+$CEND
 EOF
 else
