@@ -149,8 +149,8 @@ CMSG="$CCYAN"
 #Color Variable
 
 if [ -n "$(ps -ef | grep 'transmission-daemon' | grep -v 'grep' | awk '{print $2}')" ];then
-IP=$( ifconfig | grep -Po '(?!(inet 127.\d.\d.1))(inet \K(\d{1,3}\.){3}\d{1,3})' )
-EIP=$( curl icanhazip.com )
+IP=$(ip r g 8.8.8.8 | awk 'NR==1{print $7};')
+EIP=$(curl icanhazip.com)
 cat <<EOF
 ${CCYAN}+-----------------------------------------+$CEND
 ${CGREEN}  transmission Install Done. $CEND
