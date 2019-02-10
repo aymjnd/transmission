@@ -119,7 +119,7 @@ cat > ~/.config/transmission-daemon/settings.json <<EOF
     "speed-limit-up-enabled": true,
     "start-added-torrents": true,
     "trash-original-torrent-files": false,
-    "umask": 7,
+    "umask": 18,
     "upload-slots-per-torrent": 14,
     "utp-enabled": true
 }
